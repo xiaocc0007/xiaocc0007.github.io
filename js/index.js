@@ -10,7 +10,7 @@ $(function(){
 		var nowX , lastX , minusX = 0, nowY , lastY , minusY = 0,startX,startY;
 		var roY = 0 , roX = 0 , tZ = -2000;
 		var timer1 , timer2;
-		/*$(document).mousedown(function(ev){
+		$(document).mousedown(function(ev){
 			ev = ev || window.event;
 			lastX = ev.clientX;
 			lastY = ev.clientY;
@@ -68,8 +68,8 @@ $(function(){
 					'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
 				});
 			} , 13);
-		});*/
-		isTouchDevice();
+		});
+		/*isTouchDevice();
 		function touchStart(evt){
 			try{
 				var touch = evt.touches[0];
@@ -122,21 +122,22 @@ $(function(){
 				alert('touchEnd: '+ e.message);
 			}
 		}
+		function bind(){
+			document.addEventListener('touchstart',touchStart,false);
+			document.addEventListener('touchmove',touchMove,false);
+			document.addEventListener('touchend',touchEnd,false);
+		}
+		function isTouchDevice(){
+			try{
+				document.createEvent('TouchEvent');
+				bind();
+			}catch(e){
+				alert(e.message);
+			}
+		}*/
 	})();
 
-	function bind(){
-		document.addEventListener('touchstart',touchStart,false);
-		document.addEventListener('touchmove',touchMove,false);
-		document.addEventListener('touchend',touchEnd,false);
-	}
-	function isTouchDevice(){
-		try{
-			document.createEvent('TouchEvent');
-			bind();
-		}catch(e){
-			alert(e.message);
-		}
-	}
+
 
 	init();
 	
