@@ -4,10 +4,13 @@ $(function(){
 
 	// 拖拽 滚轮
 	(function(){
-		var nowX , lastX , minusX = 0, nowY , lastY , minusY = 0;
+		document.addEventListener('touchmove',function(event){
+			event.preventDefault();
+		},false);
+		var nowX , lastX , minusX = 0, nowY , lastY , minusY = 0,startX,startY;
 		var roY = 0 , roX = 0 , tZ = -2000;
 		var timer1 , timer2;
-		$(document).mousedown(function(ev){
+		/*$(document).mousedown(function(ev){
 			ev = ev || window.event;
 			lastX = ev.clientX;
 			lastY = ev.clientY;
@@ -65,8 +68,75 @@ $(function(){
 					'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
 				});
 			} , 13);
-		});
-	})()
+		});*/
+		isTouchDevice();
+		function touchStart(evt){
+			try{
+				var touch = evt.touches[0];
+				var x = Number(touch.pageX);
+				var y = Number(touch.pageY);
+
+				startX = x;
+				startY = y;
+			}catch(e){
+				alert('touchStart: '+ e.message);
+			}
+		}
+		function touchMove(evt){
+			try{
+				var touch = evt.touches[0];
+				var nowX = Number(touch.pageX);
+				var nowY = Number(touch.pageY);
+				minusX = nowX - startX;  // 两者差值
+				minusY = nowY - startY;
+				roY += minusX*0.02;
+				roX -= minusY*0.02;
+
+
+
+				if(xN>50||xN<-50||yN>50||yN<-50){
+					$('#main').css({
+						'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
+					});
+				}
+				startX = nowX;
+				startY = nowY;
+			}catch(e){
+				alert('touchMove: '+ e.message);
+			}
+		}
+		function touchEnd(evt){
+			try{
+				timer1 = setInterval(function(){
+					minusX *= 0.95;
+					minusY *= 0.95;
+					if ( Math.abs(minusX) < 0.5 && Math.abs(minusY) < 0.5 )
+						clearInterval( timer1 );
+					roY += minusX*0.2;
+					roX -= minusY*0.2;
+					$('#main').css({
+						'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
+					});
+				} , 13);
+			}catch(e){
+				alert('touchEnd: '+ e.message);
+			}
+		}
+	})();
+
+	function bind(){
+		document.addEventListener('touchstart',touchStart,false);
+		document.addEventListener('touchmove',touchMove,false);
+		document.addEventListener('touchend',touchEnd,false);
+	}
+	function isTouchDevice(){
+		try{
+			document.createEvent('TouchEvent');
+			bind();
+		}catch(e){
+			alert(e.message);
+		}
+	}
 
 	init();
 	
