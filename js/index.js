@@ -326,7 +326,7 @@ $(function(){
 			});
 			$('#frame').show().animate({
 				left : 0
-			},1000).find('iframe').attr('src' , 'demo/3D drag/index.html');
+			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');
 			ev.stopPropagation();
 		});
 		$('#back').click(function(ev){
