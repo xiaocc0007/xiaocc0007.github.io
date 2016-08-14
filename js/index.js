@@ -11,7 +11,6 @@ $(function(){
 		var roY = 0 , roX = 0 , tZ = -2000;
 		var timer1 , timer2;
 		$('img.img').lazyload();
-
 		$(document).mousedown(function(ev){
 			ev = ev || window.event;
 			lastX = ev.clientX;
