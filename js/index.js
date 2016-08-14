@@ -15,7 +15,7 @@ $(function(){
 
 		hammer.add(new Hammer.Pinch());
 		hammer.on('pinchin',function(e){
-			alert(e.clientX+' '+ e.clientY);
+			alert(e);
 		});
 		/*$(document).mousedown(function(ev){
 			ev = ev || window.event;
