@@ -17,6 +17,9 @@ $(function(){
 		hammer.on('pinchin',function(e){
 			alert(e.deltaX+' '+ e.deltaY);
 		});
+		hammer.on('pinchout',function(e){
+			alert(e.deltaX+' '+ e.deltaY);
+		});
 		/*$(document).mousedown(function(ev){
 			ev = ev || window.event;
 			lastX = ev.clientX;
