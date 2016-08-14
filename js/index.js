@@ -8,11 +8,11 @@ $(function(){
 			event.preventDefault();
 		},false);
 		var nowX , lastX , minusX = 0, nowY , lastY , minusY = 0,startX,startY;
-		var roY = 0 , roX = 0 , tZ = -2000;
+		var roY = 0 , roX = 0 , tZ = -4000;
 		var timer1 , timer2;
 		$('img.img').lazyload();
 
-		$(document).mousedown(function(ev){
+		/*$(document).mousedown(function(ev){
 			ev = ev || window.event;
 			lastX = ev.clientX;
 			lastY = ev.clientY;
@@ -70,8 +70,8 @@ $(function(){
 					'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
 				});
 			} , 13);
-		});
-		/*isTouchDevice();
+		});*/
+		isTouchDevice();
 		function touchStart(evt){
 			try{
 				var touch = evt.touches[0];
@@ -136,7 +136,7 @@ $(function(){
 			}catch(e){
 				alert(e.message);
 			}
-		}*/
+		}
 	})();
 
 

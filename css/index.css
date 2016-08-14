@@ -29,6 +29,7 @@ img.img{
 	height:100%;
 	position:absolute;
 	transform: scale(1.5);
+
 }
 #main{
 	width:0px;
@@ -37,7 +38,7 @@ img.img{
 	top:50%;
 	left:50%;
 	transform-style:preserve-3d; /* 变换风格：3D */
-	transform:translateZ(-2000px) rotateX(0deg) rotateY(0deg);
+	transform:translateZ(-4000px) rotateX(0deg) rotateY(0deg);
 }
 
 #main li{
