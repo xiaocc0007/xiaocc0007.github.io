@@ -10,8 +10,13 @@ $(function(){
 		var nowX , lastX , minusX = 0, nowY , lastY , minusY = 0,startX,startY;
 		var roY = 0 , roX = 0 , tZ = -4000;
 		var timer1 , timer2;
+		var hammer = new Hammer(document.getElementById('wrap'));
 		$('img.img').lazyload();
 
+		hammer.add(new Hammer.Pinch());
+		hammer.on('pinchin',function(e){
+			console.log(e.clientX+' '+ e.clientY);
+		});
 		/*$(document).mousedown(function(ev){
 			ev = ev || window.event;
 			lastX = ev.clientX;
