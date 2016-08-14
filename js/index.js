@@ -96,7 +96,7 @@ $(function(){
 
 
 
-				if(xN>50||xN<-50||yN>50||yN<-50){
+				if(minusX>50||minusX<-50||minusY>50||minusY<-50){
 					$('#main').css({
 						'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
 					});
