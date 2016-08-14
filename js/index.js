@@ -11,11 +11,18 @@ $(function(){
 		var roY = 0 , roX = 0 , tZ = -4000;
 		var timer1 , timer2;
 		var hammer = new Hammer(document.getElementById('wrap'));
+
 		$('img.img').lazyload();
 
 		hammer.add(new Hammer.Pinch());
-		hammer.on('pinchin',function(e){
-			alert(e.deltaX+' '+ e.deltaY);
+		hammer.on('pinchout',function(e){
+			tZ -= (e.deltaX)*80;
+			tZ = Math.min(0,tZ); // Math.min()  取参数里面最小的
+			tZ = Math.max(-8000,tZ); // Math.max()  …… 最大
+			// -8000 < tZ < 0
+			$('#main').css({
+				'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
+			});
 		});
 		/*$(document).mousedown(function(ev){
 			ev = ev || window.event;
@@ -147,7 +154,7 @@ $(function(){
 
 
 	init();
-	
+
 	function init(){
 		//给#main里面添加 liNum个 li标签
 		for ( var i=0 ; i<liNum ; i++ )
