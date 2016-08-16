@@ -12,7 +12,9 @@ body{
 	width:100%;
 	height:100%;
 	overflow:hidden;
-	perspective:800px; /*景深*/
+	-webkit-perspective:800px; /*景深*/
+	-moz-perspective: 800px;
+	-moz-perspective-origin: 0 0;
 }
 
 #wrap{
@@ -38,7 +40,10 @@ img.img{
 	top:50%;
 	left:50%;
 	transform-style:preserve-3d; /* 变换风格：3D */
-	transform:translateZ(-4000px) rotateX(0deg) rotateY(0deg);
+	-webkit-transform:translateZ(-1000px) rotateX(0deg) rotateY(0deg);
+	-moz-transform:translateZ(-1000px) rotateX(0deg) rotateY(0deg) ;
+	-ms-transform:translateZ(-1000px) rotateX(0deg) rotateY(0deg) ;
+	-o-transform: translateZ(-1000px) rotateX(0deg) rotateY(0deg);
 }
 
 #main li{
@@ -52,6 +57,7 @@ img.img{
 	top:-80px;
 	left:-60px;
 	transform:translateZ(0px);
+	-moz-transform:translateZ(0px);
 	transition:4s ease-in-out;
 	/*transform:translate(0px,0px); transform变换  translate变换里面的一种-位移 第一个值是水平偏移 第二个值是垂直偏移*/
 	font-family:'Microsoft yahei';
@@ -85,6 +91,7 @@ img.img{
 	position:absolute;
 	bottom:15px;
 	left:15px;
+	-moz-transform:scale(1.5);
 	transform:scale(1.5);
 	opacity:0;
 	transition:1.5s;
@@ -144,6 +151,7 @@ img.img{
 	box-shadow:0 0 12px rgba(0,255,255,0.5);
 	border-radius:3px;
 	transform:rotateY(0deg) scale(1.5);
+	-moz-transform:rotateY(0deg) scale(1.5) ;
 	display:none;
 	transition:transform 1s;
 	font-family:'Microsoft yahei';
