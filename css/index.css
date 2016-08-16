@@ -40,10 +40,10 @@ img.img{
 	top:50%;
 	left:50%;
 	transform-style:preserve-3d; /* 变换风格：3D */
-	-webkit-transform:translateZ(-8000px) rotateX(0deg) rotateY(0deg);
-	-moz-transform:translateZ(-8000px) rotateX(0deg) rotateY(0deg) ;
-	-ms-transform:translateZ(-8000px) rotateX(0deg) rotateY(0deg) ;
-	-o-transform: translateZ(-8000px) rotateX(0deg) rotateY(0deg);
+	-webkit-transform:translateZ(-2000px) rotateX(0deg) rotateY(0deg);
+	-moz-transform:translateZ(-2000px) rotateX(0deg) rotateY(0deg) ;
+	-ms-transform:translateZ(-2000px) rotateX(0deg) rotateY(0deg) ;
+	-o-transform: translateZ(-2000px) rotateX(0deg) rotateY(0deg);
 }
 
 #main li{

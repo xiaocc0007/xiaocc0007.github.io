@@ -8,7 +8,7 @@ $(function(){
 			event.preventDefault();
 		},false);
 		var nowX , lastX , minusX = 0, nowY , lastY , minusY = 0,startX,startY;
-		var roY = 0 , roX = 0 , tZ = -4000;
+		var roY = 0 , roX = 0 , tZ = -2000;
 		var timer1 , timer2;
 		var hammer = new Hammer(document.getElementById('wrap'));
 
