@@ -329,7 +329,7 @@ $(function(){
 			});
 		});
 		$show.click(function(ev){
-			$('#wrap').animate({
+			/*$('#wrap').animate({
 				'marginLeft' : '-100%'
 			},1000,function(){
 				$show.css({
@@ -339,16 +339,18 @@ $(function(){
 			});
 			$('#frame').show().animate({
 				left : 0
-			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');
+			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');*/
+			window.location.href = 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html';
 			ev.stopPropagation();
 		});
 		$('#back').click(function(ev){
-			$('#wrap').animate({
+			/*$('#wrap').animate({
 				'marginLeft' : 0
 			},1000);
 			$('#frame').show().animate({
 				left :'100%'
-			},1000);
+			},1000);*/
+			window.location.href = 'https://xiaocc0007.github.io';
 			ev.stopPropagation();
 		});
 	})();
