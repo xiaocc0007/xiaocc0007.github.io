@@ -10,23 +10,7 @@ $(function(){
 		var nowX , lastX , minusX = 0, nowY , lastY , minusY = 0,startX,startY;
 		var roY = 0 , roX = 0 , tZ = -2000;
 		var timer1 , timer2;
-		var hammer = new Hammer(document.getElementById('show'));
 
-		$('img.img').lazyload();
-		hammer.on('tap',function(ev){
-			$('#wrap').animate({
-				'marginLeft' : '-100%'
-			},1000,function(){
-				$('#show').css({
-					'transform' : 'rotateY(0deg) scale(1.5)',
-					display : 'none'
-				});
-			});
-			$('#frame').show().animate({
-				left : 0
-			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');
-			ev.stopPropagation();
-		});
 		/*hammer.add(new Hammer.Pinch());
 		hammer.on('pinchout',function(e){
 			tZ -= (e.deltaX)*80;
@@ -325,6 +309,8 @@ $(function(){
 	(function(){
 		var $mainLi = $('#main li');
 		var $show = $('#show');
+		var hammer = new Hammer(document.getElementById('show'));
+		var hammer2 = new Hammer(document.getElementById('back'));
 		$mainLi.click(function(ev){
 			ev = ev || window.event;
 			$show.fadeIn(1000).css({
@@ -341,6 +327,22 @@ $(function(){
 				'transform' : 'rotateY(180deg) scale(0.1)'
 			});
 		});
+
+		$('img.img').lazyload();
+		hammer.on('tap',function(ev){
+			$('#wrap').animate({
+				'marginLeft' : '-100%'
+			},1000,function(){
+				$('#show').css({
+					'transform' : 'rotateY(0deg) scale(1.5)',
+					display : 'none'
+				});
+			});
+			$('#frame').show().animate({
+				left : 0
+			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');
+			ev.stopPropagation();
+		});
 		/*$show.click(function(ev){
 			$('#wrap').animate({
 				'marginLeft' : '-100%'
@@ -355,7 +357,7 @@ $(function(){
 			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');
 			ev.stopPropagation();
 		});*/
-		$('#back').click(function(ev){
+		/*$('#back').click(function(ev){
 			$('#wrap').animate({
 				'marginLeft' : 0
 			},1000);
@@ -366,7 +368,19 @@ $(function(){
 				$('#frame').hide();
 			},1000);
 			ev.stopPropagation();
-		});
+		});*/
+		hammer2.on('tap',function(){
+			$('#wrap').animate({
+				'marginLeft' : 0
+			},1000);
+			$('#frame').animate({
+				left :'100%'
+			},1000);
+			setTimeout(function(){
+				$('#frame').hide();
+			},1000);
+			ev.stopPropagation();
+		})
 	})();
 
 });
