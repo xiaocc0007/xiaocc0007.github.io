@@ -10,11 +10,24 @@ $(function(){
 		var nowX , lastX , minusX = 0, nowY , lastY , minusY = 0,startX,startY;
 		var roY = 0 , roX = 0 , tZ = -2000;
 		var timer1 , timer2;
-		var hammer = new Hammer(document.getElementById('wrap'));
+		var hammer = new Hammer(document.getElementById('show'));
 
 		$('img.img').lazyload();
-
-		hammer.add(new Hammer.Pinch());
+		hammer.on('tap',function(ev){
+			$('#wrap').animate({
+				'marginLeft' : '-100%'
+			},1000,function(){
+				$('#show').css({
+					'transform' : 'rotateY(0deg) scale(1.5)',
+					display : 'none'
+				});
+			});
+			$('#frame').show().animate({
+				left : 0
+			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');
+			ev.stopPropagation();
+		});
+		/*hammer.add(new Hammer.Pinch());
 		hammer.on('pinchout',function(e){
 			tZ -= (e.deltaX)*80;
 			tZ = Math.min(0,tZ); // Math.min()  取参数里面最小的
@@ -23,7 +36,7 @@ $(function(){
 			$('#main').css({
 				'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
 			});
-		});
+		});*/
 		/*$(document).mousedown(function(ev){
 			ev = ev || window.event;
 			lastX = ev.clientX;
@@ -328,7 +341,7 @@ $(function(){
 				'transform' : 'rotateY(180deg) scale(0.1)'
 			});
 		});
-		$show.click(function(ev){
+		/*$show.click(function(ev){
 			$('#wrap').animate({
 				'marginLeft' : '-100%'
 			},1000,function(){
@@ -341,7 +354,7 @@ $(function(){
 				left : 0
 			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');
 			ev.stopPropagation();
-		});
+		});*/
 		$('#back').click(function(ev){
 			$('#wrap').animate({
 				'marginLeft' : 0
