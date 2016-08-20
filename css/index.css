@@ -14,7 +14,7 @@ body{
 	overflow:hidden;
 	-webkit-perspective:800px; /*景深*/
 	-moz-perspective: 800px;
-	-moz-perspective-origin: 0 0;
+	-webkit-perspective-origin: 50% 50%;
 }
 
 #wrap{
