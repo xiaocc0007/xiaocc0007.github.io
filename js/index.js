@@ -329,7 +329,7 @@ $(function(){
 		});
 
 		$('img.img').lazyload();
-		hammer.on('tap',function(ev){
+		/*hammer.on('tap',function(ev){
 			$('#wrap').animate({
 				'marginLeft' : '-100%'
 			},1000,function(){
@@ -342,8 +342,8 @@ $(function(){
 				left : 0
 			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');
 			ev.stopPropagation();
-		});
-		/*$show.click(function(ev){
+		});*/
+		$show.click(function(ev){
 			$('#wrap').animate({
 				'marginLeft' : '-100%'
 			},1000,function(){
@@ -356,8 +356,8 @@ $(function(){
 				left : 0
 			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');
 			ev.stopPropagation();
-		});*/
-		/*$('#back').click(function(ev){
+		});
+		$('#back').click(function(ev){
 			$('#wrap').animate({
 				'marginLeft' : 0
 			},1000);
@@ -368,8 +368,8 @@ $(function(){
 				$('#frame').hide();
 			},1000);
 			ev.stopPropagation();
-		});*/
-		hammer2.on('tap',function(){
+		});
+		/*hammer2.on('tap',function(ev){
 			$('#wrap').animate({
 				'marginLeft' : 0
 			},1000);
@@ -380,7 +380,7 @@ $(function(){
 				$('#frame').hide();
 			},1000);
 			ev.stopPropagation();
-		})
+		})*/
 	})();
 
 });
