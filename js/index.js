@@ -157,6 +157,7 @@ $(function(){
 
 	function init(){
 		//给#main里面添加 liNum个 li标签
+		$('body').css('perspective','800px');
 		for ( var i=0 ; i<liNum ; i++ )
 		{
 			var $li = $('<li><p class="title">Js</p><p class="author">未完待续</p><p class="time">2016.07.24</p></li>');
