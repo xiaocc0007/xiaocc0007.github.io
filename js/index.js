@@ -157,22 +157,22 @@ $(function(){
 		for ( var i=0 ; i<liNum ; i++ )
 		{
 			var $li = $('<li><p class="title">Js</p><p class="author">未完待续</p><p class="time">2016.07.24</p></li>');
-			/*var x = (Math.random()-0.5)*5000;
+			var x = (Math.random()-0.5)*5000;
 			var y = (Math.random()-0.5)*5000;
 			var z = (Math.random()-0.5)*5000;
 			// Math.random()   [0,1)*2000  [0,2000) ->  [-1000 , 1000)
 			$li.css({
 				'transform' : 'translate3d('+x+'px,'+y+'px,'+z+'px)'
-			});*/
+			});
 			$('#main').append($li);
 		}
-		//setTimeout(function(){
+		setTimeout(function(){
 			Grid();
 			$('#styleBtn').css({
 				transform : 'scale(1)',
 				opacity : 1
 			});
-		//},300);
+		},300);
 
 		$('#styleBtn li').on('click',function(){
 			var index = $(this).index();
