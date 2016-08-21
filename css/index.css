@@ -11,26 +11,25 @@ li{
 body{
 	width:100%;
 	height:100%;
-	overflow:hidden;
+	position:fixed;
 	-webkit-perspective:800px; /*景深*/
 	-moz-perspective: 800px;
 	-webkit-perspective-origin: 50% 50%;
 }
 
 #wrap{
-	width:100%;
-	height:100%;
-	position:absolute;
+	width: 100%;
+	height: 100%;
 	top:0px;
 	left:0px;
+	margin: 0 auto;
 	background:#023b3b;
-	overflow:hidden;
 }
 img.img{
 	width: 100%;
 	height:100%;
 	position:absolute;
-	transform: scale(1.5);
+
 }
 #main{
 	width:0px;
