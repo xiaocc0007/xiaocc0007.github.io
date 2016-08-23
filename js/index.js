@@ -10,7 +10,14 @@ $(function(){
 		var nowX , lastX , minusX = 0, nowY , lastY , minusY = 0,startX,startY;
 		var roY = 0 , roX = 0 , tZ = -2000;
 		var timer1 , timer2;
-
+		var imgs = new Array();
+		function preload() {
+			for (i = 0; i < preload.arguments.length; i++) {
+				imgs[i] = new Image();
+				imgs[i].src = preload.arguments[i];
+			}
+		}
+		preload("img/bg.png");
 		/*hammer.add(new Hammer.Pinch());
 		hammer.on('pinchout',function(e){
 			tZ -= (e.deltaX)*80;
