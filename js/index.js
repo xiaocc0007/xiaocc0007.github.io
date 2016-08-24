@@ -1,7 +1,7 @@
 $(function(){
 	
 	var liNum = 5*5*5; // 暂且认为li个数为 5*5*5 个
-
+	location.reload();
 	// 拖拽 滚轮
 	(function(){
 		document.addEventListener('touchmove',function(event){
