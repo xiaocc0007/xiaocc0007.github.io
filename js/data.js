@@ -38,5 +38,10 @@ var data = [
         "title":"小星星","src":"https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/snow.html",
         "img":"","author":"xiaocc0007","dec":"canvas画出五角星，setInterval定时器使星星不停下落"
         ,"color":"#C65134","text":"小星星"
+    },
+    {
+        "title":"壹号店","src":"https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/snow.html",
+        "img":"","author":"xiaocc0007","dec":"大量的html css代码做成的仿壹号店界面，少量js完成轮播特效"
+        ,"color":"#C65134","text":"壹号店"
     }
 ];

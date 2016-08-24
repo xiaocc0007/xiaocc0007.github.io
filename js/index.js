@@ -178,7 +178,7 @@ $(function(){
 
 	function init(){
 		//给#main里面添加 liNum个 li标签
-		var arr = [106,107,108,111,112,113,116,117];
+		var arr = [106,107,108,111,112,113,116,117,118];
 
 		for ( var i=0 ; i<liNum ; i++ )
 		{
@@ -347,7 +347,7 @@ $(function(){
 		var $dec = $('#show div.s-dec h3');
 		var hammer = new Hammer(document.getElementById('show'));
 		var hammer2 = new Hammer(document.getElementById('back'));
-		var arr = [106,107,108,111,112,113,116,117];
+		var arr = [106,107,108,111,112,113,116,117,118];
 		var index;
 		for(var i=0;i<arr.length;i++){
 			$mainLi[arr[i]].index = i;
