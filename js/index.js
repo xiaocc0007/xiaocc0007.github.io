@@ -28,131 +28,149 @@ $(function(){
 				'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
 			});
 		});*/
-		/*$(document).mousedown(function(ev){
-			ev = ev || window.event;
-			lastX = ev.clientX;
-			lastY = ev.clientY;
-			clearInterval( timer1 );
-			$(this).on('mousemove',function(ev){
-				ev = ev || window.event; //ev 事件对象 存放事件的相关信息
-				nowX = ev.clientX;  // ev.clientX  clientX属性存放鼠标x坐标
-				nowY = ev.clientY;
-				minusX = nowX - lastX;  // 两者差值
-				minusY = nowY - lastY;
-				roY += minusX*0.2;
-				roX -= minusY*0.2;
-				$('#main').css({
-					'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
-				});
-				lastX = nowX; // 存放前一点的x坐标
-				lastY = nowY;
-			});
-			return false;
-		}).mouseup(function(){
-			$(this).off('mousemove');
-			timer1 = setInterval(function(){
-				minusX *= 0.95;
-				minusY *= 0.95;
-				if ( Math.abs(minusX) < 0.5 && Math.abs(minusY) < 0.5 )
-				clearInterval( timer1 );
-				roY += minusX*0.2;
-				roX -= minusY*0.2;
-				$('#main').css({
-					'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
-				});
-			} , 13);
-		}).mousewheel(function(e,d){ //滚轮事件
-			//var d = arguments[1]   arguments 不定参   实参的集合
-			clearInterval( timer2 );
-			tZ += d*80;
-			tZ = Math.min(0,tZ); // Math.min()  取参数里面最小的
-			tZ = Math.max(-8000,tZ); // Math.max()  …… 最大
-			// -8000 < tZ < 0
-			$('#main').css({
-				'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
-			});
+		function browserRedirect() {
+			var sUserAgent = navigator.userAgent.toLowerCase();
+			var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+			var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+			var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+			var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+			var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+			var bIsAndroid = sUserAgent.match(/android/i) == "android";
+			var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+			var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+			if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+				isTouchDevice();
+				function touchStart(evt){
+					try{
+						var touch = evt.touches[0];
+						var x = Number(touch.pageX);
+						var y = Number(touch.pageY);
 
-			timer2 = setInterval(function(){
-				d *= 0.85;
-				if ( Math.abs(d) < 0.01 )
-				{
-					clearInterval( timer2 );
+						startX = x;
+						startY = y;
+					}catch(e){
+						alert('touchStart: '+ e.message);
+					}
 				}
-				tZ += d*80;
-				tZ = Math.min(0,tZ); // Math.min()  取参数里面最小的
-				tZ = Math.max(-8000,tZ); // Math.max()  …… 最大
-				// -8000 < tZ < 0
-				$('#main').css({
-					'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
-				});
-			} , 13);
-		});*/
-		isTouchDevice();
-		function touchStart(evt){
-			try{
-				var touch = evt.touches[0];
-				var x = Number(touch.pageX);
-				var y = Number(touch.pageY);
-
-				startX = x;
-				startY = y;
-			}catch(e){
-				alert('touchStart: '+ e.message);
-			}
-		}
-		function touchMove(evt){
-			try{
-				var touch = evt.touches[0];
-				var nowX = Number(touch.pageX);
-				var nowY = Number(touch.pageY);
-				minusX = nowX - startX;  // 两者差值
-				minusY = nowY - startY;
-				roY += minusX*0.02;
-				roX -= minusY*0.02;
+				function touchMove(evt){
+					try{
+						var touch = evt.touches[0];
+						var nowX = Number(touch.pageX);
+						var nowY = Number(touch.pageY);
+						minusX = nowX - startX;  // 两者差值
+						minusY = nowY - startY;
+						roY += minusX*0.02;
+						roX -= minusY*0.02;
 
 
 
-				if(minusX>50||minusX<-50||minusY>50||minusY<-50){
-					$('#main').css({
-						'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
-					});
+						if(minusX>50||minusX<-50||minusY>50||minusY<-50){
+							$('#main').css({
+								'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
+							});
+						}
+						startX = nowX;
+						startY = nowY;
+					}catch(e){
+						alert('touchMove: '+ e.message);
+					}
 				}
-				startX = nowX;
-				startY = nowY;
-			}catch(e){
-				alert('touchMove: '+ e.message);
+				function touchEnd(evt){
+					try{
+						timer1 = setInterval(function(){
+							minusX *= 0.95;
+							minusY *= 0.95;
+							if ( Math.abs(minusX) < 0.5 && Math.abs(minusY) < 0.5 )
+								clearInterval( timer1 );
+							roY += minusX*0.2;
+							roX -= minusY*0.2;
+							$('#main').css({
+								'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
+							});
+						} , 13);
+					}catch(e){
+						alert('touchEnd: '+ e.message);
+					}
+				}
+				function bind(){
+					document.addEventListener('touchstart',touchStart,false);
+					document.addEventListener('touchmove',touchMove,false);
+					document.addEventListener('touchend',touchEnd,false);
+				}
+				function isTouchDevice(){
+					try{
+						document.createEvent('TouchEvent');
+						bind();
+					}catch(e){
+						alert(e.message);
+					}
+				}
+			} else {
+				$(document).mousedown(function(ev){
+					 ev = ev || window.event;
+					 lastX = ev.clientX;
+					 lastY = ev.clientY;
+					 clearInterval( timer1 );
+					 $(this).on('mousemove',function(ev){
+						 ev = ev || window.event; //ev 事件对象 存放事件的相关信息
+						 nowX = ev.clientX;  // ev.clientX  clientX属性存放鼠标x坐标
+						 nowY = ev.clientY;
+						 minusX = nowX - lastX;  // 两者差值
+						 minusY = nowY - lastY;
+						 roY += minusX*0.2;
+						 roX -= minusY*0.2;
+						 $('#main').css({
+							'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
+						 });
+						 lastX = nowX; // 存放前一点的x坐标
+						 lastY = nowY;
+					 });
+				 	return false;
+				 }).mouseup(function(){
+				 	$(this).off('mousemove');
+					 timer1 = setInterval(function(){
+						 minusX *= 0.95;
+						 minusY *= 0.95;
+						 if ( Math.abs(minusX) < 0.5 && Math.abs(minusY) < 0.5 )
+						 clearInterval( timer1 );
+						 roY += minusX*0.2;
+						 roX -= minusY*0.2;
+						 $('#main').css({
+						 	'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
+						 });
+					 } , 13);
+				 }).mousewheel(function(e,d){ //滚轮事件
+				 //var d = arguments[1]   arguments 不定参   实参的集合
+				 clearInterval( timer2 );
+				 tZ += d*80;
+				 tZ = Math.min(0,tZ); // Math.min()  取参数里面最小的
+				 tZ = Math.max(-8000,tZ); // Math.max()  …… 最大
+				 // -8000 < tZ < 0
+				 $('#main').css({
+				 'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
+				 });
+
+				 timer2 = setInterval(function(){
+				 d *= 0.85;
+				 if ( Math.abs(d) < 0.01 )
+				 {
+				 clearInterval( timer2 );
+				 }
+				 tZ += d*80;
+				 tZ = Math.min(0,tZ); // Math.min()  取参数里面最小的
+				 tZ = Math.max(-8000,tZ); // Math.max()  …… 最大
+				 // -8000 < tZ < 0
+				 $('#main').css({
+				 'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
+				 });
+				 } , 13);
+				 });
 			}
 		}
-		function touchEnd(evt){
-			try{
-				timer1 = setInterval(function(){
-					minusX *= 0.95;
-					minusY *= 0.95;
-					if ( Math.abs(minusX) < 0.5 && Math.abs(minusY) < 0.5 )
-						clearInterval( timer1 );
-					roY += minusX*0.2;
-					roX -= minusY*0.2;
-					$('#main').css({
-						'transform' : 'translateZ('+ tZ +'px) rotateX('+ roX +'deg) rotateY('+ roY +'deg)'
-					});
-				} , 13);
-			}catch(e){
-				alert('touchEnd: '+ e.message);
-			}
-		}
-		function bind(){
-			document.addEventListener('touchstart',touchStart,false);
-			document.addEventListener('touchmove',touchMove,false);
-			document.addEventListener('touchend',touchEnd,false);
-		}
-		function isTouchDevice(){
-			try{
-				document.createEvent('TouchEvent');
-				bind();
-			}catch(e){
-				alert(e.message);
-			}
-		}
+
+		browserRedirect();
+
+
 	})();
 
 
@@ -316,15 +334,30 @@ $(function(){
 	(function(){
 		var $mainLi = $('#main li');
 		var $show = $('#show');
+		var $title = $('#show div.s-title h1');
+		var $author = $('#show div.s-author h1');
+		var $dec = $('#show div.s-dec h3');
 		var hammer = new Hammer(document.getElementById('show'));
 		var hammer2 = new Hammer(document.getElementById('back'));
-		$mainLi.click(function(ev){
-			ev = ev || window.event;
-			$show.fadeIn(1000).css({
-				'transform' : 'rotateY(0deg)scale(1)'
-			});
-			ev.stopPropagation();
-		});
+		var arr = [106,107,108,111,112,113,116,117];
+		var index;
+		for(var i=0;i<arr.length;i++){
+			$mainLi[arr[i]].index = i;
+			$mainLi[arr[i]].addEventListener("click",bindClick);
+		}
+		function bindClick(ev){
+
+				index = this.index;
+				ev = ev || window.event;
+				$show.fadeIn(1000).css({
+					'transform' : 'rotateY(0deg)scale(1)'
+				});
+				$title.html(data[index].title);
+				$author.html(data[index].author);
+				$dec.html(data[index].dec);
+				ev.stopPropagation();
+		}
+
 		$(document).click(function(){
 			$show.fadeOut(1000,function(){
 				/*$(this).css({
@@ -362,7 +395,9 @@ $(function(){
 /*			$('#frame').show().animate({
 				left : 0
 			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');*/
-			window.location.href = 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html';
+
+			window.location.href = data[index].src;
+
 			ev.stopPropagation();
 		});
 		$('#back').click(function(ev){
