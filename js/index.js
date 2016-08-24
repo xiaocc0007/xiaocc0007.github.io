@@ -400,9 +400,10 @@ $(function(){
 					display : 'none'
 				});
 			});
-			$('#frame').show().animate({
+			/*$('#frame').show().animate({
 				left : 0
-			},1000).find('iframe').attr('src' ,data[index].src);
+			},1000).find('iframe').attr('src' ,data[index].src);*/
+			window.location.href = data[index].src;
 
 
 			ev.stopPropagation();
