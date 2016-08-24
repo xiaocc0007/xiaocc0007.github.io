@@ -1,7 +1,6 @@
 $(function(){
 	
 	var liNum = 5*5*5; // 暂且认为li个数为 5*5*5 个
-	location.reload();
 	// 拖拽 滚轮
 	(function(){
 		document.addEventListener('touchmove',function(event){
@@ -401,11 +400,10 @@ $(function(){
 					display : 'none'
 				});
 			});
-/*			$('#frame').show().animate({
+			$('#frame').show().animate({
 				left : 0
-			},1000).find('iframe').attr('src' , 'https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/demo.html');*/
+			},1000).find('iframe').attr('src' ,data[index].src);
 
-			window.location.href = data[index].src;
 
 			ev.stopPropagation();
 		});
