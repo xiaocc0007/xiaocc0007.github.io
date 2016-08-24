@@ -42,6 +42,6 @@ var data = [
     {
         "title":"壹号店","src":"https://htmlpreview.github.com/?https://github.com/xiaocc0007/3d/blob/master/snow.html",
         "img":"","author":"xiaocc0007","dec":"大量的html css代码做成的仿壹号店界面，少量js完成轮播特效"
-        ,"color":"#C65134","text":"壹号店"
+        ,"color":"#CF6D36","text":"壹号店"
     }
 ];
