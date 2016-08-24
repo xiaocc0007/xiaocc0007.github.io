@@ -179,9 +179,18 @@ $(function(){
 
 	function init(){
 		//给#main里面添加 liNum个 li标签
+		var arr = [106,107,108,111,112,113,116,117];
+
 		for ( var i=0 ; i<liNum ; i++ )
 		{
 			var $li = $('<li><p class="title">Js</p><p class="author">未完待续</p><p class="time">2016.07.24</p></li>');
+			for(var j=0;j<arr.length;j++){
+				if(i==arr[j]){
+					$li.find('p.author').html(data[j].text);
+					$li.css('background',data[j].color);
+					break;
+				}
+			}
 			var x = (Math.random()-0.5)*5000;
 			var y = (Math.random()-0.5)*5000;
 			var z = (Math.random()-0.5)*5000;
